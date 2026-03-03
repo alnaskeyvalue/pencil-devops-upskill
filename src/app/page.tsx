@@ -6,7 +6,6 @@ const codingQuotes = [
   "I don't always test my code, but when I do, I do it in production.",
   "Debuggers don't remove bugs. They only show them in slow motion.",
   "The best way to get a project done faster is to start sooner. - Jim Highsmith",
-  "Software is like sex: it's better when it's free. - Linus Torvalds",
   "Walking on water and developing software from a specification are easy if both are frozen. - Edward V. Berard",
   "It works on my machine.",
   "It's not a bug – it's an undocumented feature.",
@@ -23,6 +22,7 @@ const codingQuotes = [
   "If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra",
   "The computer was born to solve problems that did not exist before. - Bill Gates"
 ];
+const quoteIndex = Math.floor(Math.random() * codingQuotes.length);
 
 export default async function Home() {
   const headersList = await headers();
@@ -32,7 +32,7 @@ export default async function Home() {
   const theme = cookieStore.get('theme')?.value || 'dark'; // Default to dark mode
 
   const serverTime = new Date().toISOString();
-  const randomQuote = codingQuotes[Math.floor(Math.random() * codingQuotes.length)];
+  const randomQuote = codingQuotes[quoteIndex];
 
   const isDark = theme === 'dark';
 
@@ -105,9 +105,10 @@ export default async function Home() {
 
         <div style={styles.quoteContainer}>
           <p style={styles.quote}>
-            "{randomQuote}"
+            &quot;{randomQuote}&quot;
           </p>
         </div>
+        <p>Created by pencil-devops-upskill team</p>
       </main>
     </div>
   );
